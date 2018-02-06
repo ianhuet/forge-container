@@ -8,4 +8,17 @@ services:
       - ./config/users.conf:/etc/sftp/users.conf:ro
     ports:
       - "2222:22"
-      - "80:80"
+      - "8080:80"
+    networks:
+      - coderforge-network
+
+  mongo:
+    image: "mongo:jessie"
+    ports:
+      - "27017:27017"
+    networks:
+      - coderforge-network
+
+networks:
+  coderforge-network:
+    driver: bridge
